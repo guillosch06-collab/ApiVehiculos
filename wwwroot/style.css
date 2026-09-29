@@ -1,0 +1,54 @@
+body {
+    background-color: #f8f9fa;
+}
+
+h3 {
+    color: #343a40;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.Contenedor {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 30px;
+}
+
+.izquierda {
+    width: 40%;
+}
+
+.derecha {
+    width: 55%;
+}
+
+@media (max-width: 768px) {
+    .Contenedor {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .izquierda {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .derecha {
+        width: 100%;
+        margin-bottom: 20px;
+
+    }
+}

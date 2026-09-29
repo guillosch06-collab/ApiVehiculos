@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Vehículos</title>
+    <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Vehiculos.js">
+</head>
+
+<body>
+
+    <div class="Contenedor">
+
+        <div class="izquierda">
+            <h3>Carga de Vehículos</h3>
+            <form id="formVehiculo">
+
+                <div class="mb-3">
+                    <label for="marca" class="form-label">Marca:</label>
+                    <input type="text" class="form-control" id="marca" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="modelo" class="form-label">Modelo:</label>
+                    <input type="text" class="form-control" id="modelo" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="anio" class="form-label">Año:</label>
+                    <input type="number" class="form-control" id="anio" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="patente" class="form-label">Patente:</label>
+                    <input type="text" class="form-control" id="patente" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="km" class="form-label">Kilómetros:</label>
+                    <input type="number" class="form-control" id="km" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cargar Vehículo</button>
+
+            </form>
+
+
+        </div>
+        <div class="derecha">
+            <table class="table">
+                <h3>Vehículos</h3>
+                <thead>
+                    <tr>
+                        <th scope="col" hidden>ID</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Año</th>
+                        <th scope="col">Patente</th>
+                        <th scope="col">Kilómetros</th>
+                        <th scope="col">Fecha de Ingreso</th>
+                        <th scope="col">Disponible</th>
+                        <th scope="col"> </th>
+                        <th scope="col"> </th>
+
+                    </tr>
+                </thead>
+                <tbody id="TablaVehiculos">
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="modal fade" id="modalEditar" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Vehículo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="editarId">
+
+                    <div class="mb-3">
+                        <label class="form-label">Marca</label>
+                        <input type="text" class="form-control" id="editarMarca">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Modelo</label>
+                        <input type="text" class="form-control" id="editarModelo">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Año</label>
+                        <input type="number" class="form-control" id="editarAnio">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Patente</label>
+                        <input type="text" class="form-control" id="editarPatente">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Kilómetros</label>
+                        <input type="number" class="form-control" id="editarKm">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button type="button" class="btn btn-primary" onclick="GuardarCambios()">
+                        Guardar cambios
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Vehiculos.js"></script>
+</body>
+
+</html>
