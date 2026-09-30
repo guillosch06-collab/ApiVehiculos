@@ -43,7 +43,6 @@ namespace ApiVehiculos.Controllers
         }
 
         // PUT: api/CargaVehiculo/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutVehiculos(int id, Vehiculos vehiculos)
         {
@@ -74,32 +73,45 @@ namespace ApiVehiculos.Controllers
         }
 
         // POST: api/CargaVehiculo
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Vehiculos>> PostVehiculos(Vehiculos vehiculos)
         {
             _context.Vehiculos.Add(vehiculos);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVehiculos", new { id = vehiculos.VehiculoId }, vehiculos);
+            return CreatedAtAction(
+                "GetVehiculos",
+                new { id = vehiculos.VehiculoId },
+                vehiculos
+            );
         }
 
         // DELETE: api/CargaVehiculo/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVehiculos(int id)
+        public async Task<IActionResult> DeleteVehiculo(int id)
         {
-            var vehiculos = await _context.Vehiculos.FindAsync(id);
-            if (vehiculos == null)
+            var vehiculo = await _context.Vehiculos.FindAsync(id);
+
+            if (vehiculo == null)
             {
-                return NotFound();
+                return NotFound("El vehículo no existe.");
             }
 
-            _context.Vehiculos.Remove(vehiculos);
+            if (vehiculo.Disponible == true)
+            {
+                return BadRequest(
+                    "No se puede eliminar un vehículo que está disponible."
+                );
+            }
+
+            _context.Vehiculos.Remove(vehiculo);
+
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok("Vehículo eliminado correctamente.");
         }
 
+        // Verifica si existe el vehículo
         private bool VehiculosExists(int id)
         {
             return _context.Vehiculos.Any(e => e.VehiculoId == id);

@@ -50,28 +50,77 @@
 
         </div>
         <div class="derecha">
-            <table class="table">
-                <h3>Vehículos</h3>
-                <thead>
-                    <tr>
-                        <th scope="col" hidden>ID</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Modelo</th>
-                        <th scope="col">Año</th>
-                        <th scope="col">Patente</th>
-                        <th scope="col">Kilómetros</th>
-                        <th scope="col">Fecha de Ingreso</th>
-                        <th scope="col">Disponible</th>
-                        <th scope="col"> </th>
-                        <th scope="col"> </th>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Patente</th>
+                            <th class="dato-extra">Año</th>
+                            <th class="dato-extra">Km</th>
+                            <th class="dato-extra">Fecha</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
 
-                    </tr>
-                </thead>
-                <tbody id="TablaVehiculos">
+                    <tbody id="TablaVehiculos">
+                    </tbody>
+                </table>
+            </div>
 
-                </tbody>
-            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="modalDetalles" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle del vehículo</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <p><strong>Marca:</strong> <span id="detalleMarca"></span></p>
+
+                    <p><strong>Modelo:</strong> <span id="detalleModelo"></span></p>
+
+                    <p><strong>Año:</strong> <span id="detalleAnio"></span></p>
+
+                    <p><strong>Patente:</strong> <span id="detallePatente"></span></p>
+
+                    <p><strong>Kilómetros:</strong> <span id="detalleKm"></span></p>
+
+                    <p><strong>Fecha de ingreso:</strong> <span id="detalleFecha"></span></p>
+
+                    <p>
+                        <strong>Estado:</strong>
+                        <span id="detalleDisponible"></span>
+                    </p>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-warning" id="btnEditarDetalle">
+                        Editar
+                    </button>
+
+                    <button type="button" class="btn btn-danger" id="btnEliminarDetalle">
+                        Eliminar
+                    </button>
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+
+                </div>
+
+            </div>
         </div>
     </div>
     <div class="modal fade" id="modalEditar" tabindex="-1">
@@ -111,7 +160,10 @@
                         <label class="form-label">Kilómetros</label>
                         <input type="number" class="form-control" id="editarKm">
                     </div>
-
+                    <div class="mb-3">
+                        <label class="form-label">Disponible</label>
+                        <input type="checkbox" class="form-check-input" id="editarDisponible">
+                    </div>
                 </div>
 
                 <div class="modal-footer">

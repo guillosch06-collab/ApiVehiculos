@@ -11,5 +11,5 @@ public class Vehiculos
     public string? Patente { get; set; }
     public int? Km { get; set; }
     public DateTime? FechaIngreso { get; set; }
-    public bool? Disponible { get; set; }
+    public bool? Disponible { get; set; } = true;
 }

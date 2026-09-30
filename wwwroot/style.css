@@ -34,7 +34,14 @@ h3 {
 .derecha {
     width: 55%;
 }
-
+.dato-extra {
+    display: table-cell;
+}
+@media (min-width: 768px) {
+    .accion-movil {
+        display: none;
+    }
+}
 @media (max-width: 768px) {
     .Contenedor {
         flex-direction: column;
@@ -45,7 +52,9 @@ h3 {
         width: 100%;
         margin-bottom: 20px;
     }
-
+    .dato-extra {
+        display: none;
+    }
     .derecha {
         width: 100%;
         margin-bottom: 20px;
