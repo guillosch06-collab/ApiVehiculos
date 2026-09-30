@@ -56,12 +56,13 @@
                         <tr>
                             <th>Marca</th>
                             <th>Modelo</th>
-                            <th>Patente</th>
+                            <th class="dato-extra">Patente</th>
                             <th class="dato-extra">Año</th>
                             <th class="dato-extra">Km</th>
                             <th class="dato-extra">Fecha</th>
                             <th>Estado</th>
-                            <th>Acciones</th>
+                            <th class="acciones-grandes">Acciones</th>
+                            <th class="accion-movil">Detalles</th>
                         </tr>
                     </thead>
 
@@ -69,7 +70,6 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
     <div class="modal fade" id="modalDetalles" tabindex="-1">
@@ -159,6 +159,10 @@
                     <div class="mb-3">
                         <label class="form-label">Kilómetros</label>
                         <input type="number" class="form-control" id="editarKm">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Fecha de ingreso</label>
+                        <input type="date" class="form-control" id="editarFecha">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Disponible</label>

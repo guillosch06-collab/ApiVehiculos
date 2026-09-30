@@ -34,30 +34,45 @@ h3 {
 .derecha {
     width: 55%;
 }
+
 .dato-extra {
     display: table-cell;
 }
-@media (min-width: 768px) {
-    .accion-movil {
-        display: none;
-    }
+
+.acciones-grandes {
+    display: table-cell;
 }
-@media (max-width: 768px) {
+
+.accion-movil {
+    display: none;
+}
+
+@media (max-width: 767px) {
     .Contenedor {
         flex-direction: column;
         gap: 20px;
+        padding: 15px;
     }
 
     .izquierda {
         width: 100%;
         margin-bottom: 20px;
     }
-    .dato-extra {
-        display: none;
-    }
+
     .derecha {
         width: 100%;
         margin-bottom: 20px;
+    }
 
+    .dato-extra {
+        display: none !important;
+    }
+
+    .acciones-grandes {
+        display: none !important;
+    }
+
+    .accion-movil {
+        display: table-cell !important;
     }
 }

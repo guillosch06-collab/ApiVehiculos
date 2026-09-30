@@ -17,7 +17,7 @@ async function listarVehiculos() {
             <tr>
                 <td>${vehiculo.marca}</td>
                 <td>${vehiculo.modelo}</td>
-                <td>${vehiculo.patente}</td>
+                <td class="dato-extra">${vehiculo.patente}</td>
 
                 <td class="dato-extra">${vehiculo.anio}</td>
 
@@ -28,11 +28,10 @@ async function listarVehiculos() {
                 </td>
 
                 <td>
-                    ${
-                        vehiculo.disponible
-                        ? '<span class="badge bg-success">Disponible</span>'
-                        : '<span class="badge bg-danger">No disponible</span>'
-                    }
+                    ${vehiculo.disponible
+                ? '<span class="badge bg-success">Disponible</span>'
+                : '<span class="badge bg-danger">No disponible</span>'
+            }
                 </td>
 
                 <td class="acciones-grandes">
@@ -62,7 +61,7 @@ async function listarVehiculos() {
 }
 
 
-document.getElementById("formVehiculo").addEventListener("submit", async function(event) {
+document.getElementById("formVehiculo").addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -71,7 +70,8 @@ document.getElementById("formVehiculo").addEventListener("submit", async functio
         modelo: document.getElementById("modelo").value,
         anio: parseInt(document.getElementById("anio").value),
         patente: document.getElementById("patente").value,
-        km: parseInt(document.getElementById("km").value)
+        km: parseInt(document.getElementById("km").value),
+        fechaIngreso: new Date().toISOString()
     };
 
     if (vehiculo.anio < 1886 || vehiculo.anio > new Date().getFullYear()) {
@@ -132,7 +132,7 @@ async function MostrarDetalles(id) {
             ? '<span class="badge bg-success">Disponible</span>'
             : '<span class="badge bg-danger">No disponible</span>';
 
-    document.getElementById("btnEditarDetalle").onclick = function() {
+    document.getElementById("btnEditarDetalle").onclick = function () {
 
         const modal = bootstrap.Modal.getInstance(
             document.getElementById("modalDetalles")
@@ -156,7 +156,7 @@ async function MostrarDetalles(id) {
         btnEliminar.disabled = false;
         btnEliminar.textContent = "Eliminar";
 
-        btnEliminar.onclick = function() {
+        btnEliminar.onclick = function () {
 
             const modal = bootstrap.Modal.getInstance(
                 document.getElementById("modalDetalles")
@@ -222,6 +222,13 @@ async function EditarVehiculo(id) {
     document.getElementById("editarKm").value = vehiculo.km;
     document.getElementById("editarDisponible").checked = vehiculo.disponible;
 
+    if (vehiculo.fechaIngreso) {
+        document.getElementById("editarFecha").value =
+            new Date(vehiculo.fechaIngreso).toISOString().split("T")[0];
+    }
+
+    document.getElementById("editarDisponible").checked = vehiculo.disponible;
+
     const modal = new bootstrap.Modal(
         document.getElementById("modalEditar")
     );
@@ -241,6 +248,7 @@ async function GuardarCambios() {
         anio: parseInt(document.getElementById("editarAnio").value),
         patente: document.getElementById("editarPatente").value,
         km: parseInt(document.getElementById("editarKm").value),
+        fechaIngreso: document.getElementById("editarFecha").value,
         disponible: document.getElementById("editarDisponible").checked
     };
 
